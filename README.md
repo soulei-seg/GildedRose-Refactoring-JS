@@ -13,4 +13,4 @@ Créer une méthode par fonctionnalités
 
 Chaque sous classe dispose de ses propres méthodes pour mettre à jour la qualité et le nombre de jours avant expiration de l'item. 
 
-
+Nous prévoyons d'implémenter les objets conjurés après la refacto du code. 
