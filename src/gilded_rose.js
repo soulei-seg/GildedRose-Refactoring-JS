@@ -32,6 +32,33 @@ class Cheese extends Item {
   }
 }
 
+class Concert extends Item {
+  constructor(name, sellIn, quality) {
+    super(name, sellIn, quality);
+  }
+  changeQuality() {
+    this.sellIn --;
+    if (this.sellIn <= 0) {
+      this.quality = 0;
+    } else if (this.sellIn <= 5) {
+      this.quality += 3;
+    } else if (this.sellIn <= 10) {
+      this.quality += 2;
+    } else this.quality += 1;
+    return this.quality
+  }
+}
+
+class Legendary extends Item {
+  constructor(name, quality) {
+    super(name, 0, quality)
+  }
+
+  changeQuality() {
+    return this.quality;
+  }
+}
+
 class Shop {
   constructor(items=[]){
     this.items = items;
@@ -45,21 +72,7 @@ class Shop {
           }
         }
       } else {
-        if (this.items[i].quality < 50) { //Redondant avec la fonction de la classe Cheese
           this.items[i].quality = this.items[i].changeQuality();
-          if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].changeQuality();
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].changeQuality();
-              }
-            }
-          }
-        }
       }
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
@@ -93,5 +106,7 @@ module.exports = {
   Item,
   Shop,
   Standard,
-  Cheese
+  Cheese,
+  Concert,
+  Legendary
 }
