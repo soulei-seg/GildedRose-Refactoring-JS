@@ -20,7 +20,7 @@ describe("Standard items", function() {
   });
 
   it("Once the sell by date has passed, Quality degrades twice as fast", function() {
-    const gildedRose = new Shop([new Item("itemName", 0, 10)]);
+    const gildedRose = new Shop([new Standard("itemName", 0, 10)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(8);
   });
