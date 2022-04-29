@@ -24,6 +24,11 @@ describe("Standard items", function() {
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(8);
   });
+  it("quality is never less than 0", function() {
+    const gildedRose = new Shop([new Standard("itemName", 0, 0)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(0);
+  });
 });
 
 describe("Aged Brie", () => {
