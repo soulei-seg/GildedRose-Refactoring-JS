@@ -12,8 +12,21 @@ class Standard extends Item {
   }
   changeQuality() {
     this.sellIn --;
-    if(this.quality > 0) {
+    if (this.quality > 0) {
       this.quality --;
+    }
+    return this.quality
+  }
+}
+
+class Cheese extends Item {
+  constructor(name, sellIn, quality) {
+    super(name, sellIn, quality);
+  }
+  changeQuality() {
+    this.sellIn --;
+    if (this.quality < 50) {
+      this.quality ++;
     }
     return this.quality
   }
@@ -32,8 +45,8 @@ class Shop {
           }
         }
       } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1;
+        if (this.items[i].quality < 50) { //Redondant avec la fonction de la classe Cheese
+          this.items[i].quality = this.items[i].changeQuality();
           if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
             if (this.items[i].sellIn < 11) {
               if (this.items[i].quality < 50) {
@@ -42,7 +55,7 @@ class Shop {
             }
             if (this.items[i].sellIn < 6) {
               if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1;
+                this.items[i].quality = this.items[i].changeQuality();
               }
             }
           }
@@ -79,5 +92,6 @@ class Shop {
 module.exports = {
   Item,
   Shop,
-  Standard
+  Standard,
+  Cheese
 }

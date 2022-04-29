@@ -1,4 +1,4 @@
-const {Shop, Item, Standard} = require("../src/gilded_rose");
+const {Shop, Item, Standard, Cheese} = require("../src/gilded_rose");
 
 describe("Standard items", function() {
   it("Should create shop", function() {
@@ -33,7 +33,7 @@ describe("Standard items", function() {
 
 describe("Aged Brie", () => {
   it("should increase quality", function() {
-    const gildedRose = new Shop([new Item("Aged Brie", 4, 10)]);
+    const gildedRose = new Shop([new Cheese("Aged Brie", 4, 10)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(11);
   });
