@@ -1,4 +1,4 @@
-const {Shop, Item} = require("../src/gilded_rose");
+const {Shop, Item, Standard} = require("../src/gilded_rose");
 
 describe("Standard items", function() {
   it("Should create shop", function() {
@@ -8,7 +8,7 @@ describe("Standard items", function() {
   });
 
   it("Should decrease quality", function() {
-    const gildedRose = new Shop([new Item("itemName", 4, 10)]);
+    const gildedRose = new Shop([new Standard("itemName", 4, 10)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(9);
   });
