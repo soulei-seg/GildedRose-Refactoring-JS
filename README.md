@@ -1,9 +1,9 @@
 # GildedRose-Refactoring-JS
 
-Pour réfactorer "sans douleur", nous prévoyons la mise en place de tests unitaires au préalable. 
+Pour réfactorer "sans douleur", nous prévoyons la mise en place de tests unitaires au préalable. - OK
 
 
-Créer des sous classes à Item pour chacun des 3 objets (Consumable, Armor, MagicItem) 
+Créer des sous classes à Item pour chacun des objets (Standard, Legendary, Concert, Cheese) 
 --> Pour mieux gérer les différentes exceptions et limiter les cas conditionnels. 
 --> Gérer la diminution/augmentation de qualité 
 
