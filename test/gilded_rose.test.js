@@ -1,4 +1,4 @@
-const {Shop, Item, Standard, Cheese, Concert, Legendary} = require("../src/gilded_rose");
+const {Shop, Standard, Cheese, Concert, Legendary, Conjured} = require("../src/gilded_rose");
 
 describe("Standard items", function() {
   it("Should create shop", function() {
@@ -26,7 +26,7 @@ describe("Standard items", function() {
   });
 
   it("quality is never less than 0", function() {
-    const gildedRose = new Shop([new Standard("itemName", 0, 0)]);
+    const gildedRose = new Shop([new Standard("itemName", 0, 1)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(0);
   });
@@ -69,14 +69,27 @@ describe("Backstage passes to a TAFKAL80ETC", () => {
 });
 
 describe("Sulfuras, Hand of Ragnaros", () => {
-  it("should never change quality", function() {
+  it("should always have a quality equal to 80, no matter what", function() {
     const gildedRose = new Shop([new Legendary("Sulfuras, Hand of Ragnaros", 10)]);
     const items = gildedRose.updateQuality();
-    expect(items[0].quality).toBe(10);
+    expect(items[0].quality).toBe(80);
   });
-  it("quality is never less than 0", function() {
-    const gildedRose = new Shop([new Legendary("Sulfuras, Hand of Ragnaros", 0)]);
+});
+
+describe("Cursed Dark Wizard's Hand", () => {
+  it("should decrease in quality twice faster than standard items", function () {
+    const gildedRose = new Shop([new Conjured("Cursed Dark Wizard's Hand", 13, 10)])
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(8);
+  });
+  it("should decrease in quality two times faster if sellIn drops below 0", function () {
+    const gildedRose = new Shop([new Conjured("Cursed Dark Wizard's Hand", 0, 6)]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(2);
+  })
+  it("should never have a quality below 0", function () {
+    const gildedRose = new Shop([new Conjured("Cursed Dark Wizard's Hand", -1, 2)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(0);
-  });
+  })
 });
