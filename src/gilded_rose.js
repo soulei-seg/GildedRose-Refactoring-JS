@@ -14,7 +14,7 @@ class Standard extends Item {
     this.sellIn --;
     let multiplier = this.sellIn < 0 ? 2 : 1;
     if (this.quality > 0) {
-      this.quality = this.quality - multiplier;;
+      this.quality -= multiplier;;
     }
     return this.quality
   }
@@ -55,7 +55,7 @@ class Legendary extends Item {
     super(name, 0, quality)
   }
   changeQuality() {
-    return this.quality;
+    return this.quality = 80;
   }
 }
 
@@ -79,5 +79,5 @@ module.exports = {
   Standard,
   Cheese,
   Concert,
-  Legendary
+  Legendary,
 }
