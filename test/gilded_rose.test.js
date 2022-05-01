@@ -1,4 +1,5 @@
-const {Shop, Standard, Cheese, Concert, Legendary, Conjured} = require("../src/gilded_rose");
+const {Shop} = require("../src/gilded_rose");
+const { Standard, Cheese, Concert, Legendary, Conjured }= require("../src/item_types");
 
 describe("Standard items", function() {
   it("Should create shop", function() {
