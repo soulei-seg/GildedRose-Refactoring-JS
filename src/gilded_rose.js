@@ -13,8 +13,10 @@ class Standard extends Item {
   changeQuality() {
     this.sellIn --;
     let multiplier = this.sellIn < 0 ? 2 : 1;
-    if (this.quality > 0) {
+    if (this.quality-multiplier > 0) {
       this.quality -= multiplier;;
+    } else {
+      this.quality = 0;
     }
     return this.quality
   }
@@ -59,6 +61,22 @@ class Legendary extends Item {
   }
 }
 
+class Conjured extends Item {
+  constructor(name, sellIn, quality) {
+    super(name, sellIn, quality);
+  }
+  changeQuality(){
+    this.sellIn --;
+    let multiplier = this.sellIn < 0 ? 4 : 2;
+    if (this.quality-multiplier >= 0) {
+      this.quality -= multiplier;
+    } else {
+      this.quality = 0;
+    }
+    return this.quality;
+  }
+}
+
 class Shop {
   constructor(items=[]){
     this.items = items;
@@ -80,4 +98,5 @@ module.exports = {
   Cheese,
   Concert,
   Legendary,
+  Conjured
 }

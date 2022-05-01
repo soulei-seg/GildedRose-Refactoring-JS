@@ -1,4 +1,4 @@
-const {Shop, Standard, Cheese, Concert, Legendary} = require("../src/gilded_rose");
+const {Shop, Standard, Cheese, Concert, Legendary, Conjured} = require("../src/gilded_rose");
 
 describe("Standard items", function() {
   it("Should create shop", function() {
@@ -26,7 +26,7 @@ describe("Standard items", function() {
   });
 
   it("quality is never less than 0", function() {
-    const gildedRose = new Shop([new Standard("itemName", 0, 0)]);
+    const gildedRose = new Shop([new Standard("itemName", 0, 1)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(0);
   });
